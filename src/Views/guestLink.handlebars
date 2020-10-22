@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>report linkt</title>
+  <style>
+    #my-body{
+      background-color: #242424;
+      color:white;
+      
+    }
+    .header{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+      h1{
+        border-bottom: 2px solid #121212;
+        padding:10px;
+        margin-bottom:0px;
+        text-align:center;
+      }
+    .body{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background-color: #242424;
+    }
+    a{
+      margin-left:25px;
+      color: rgb(57,255,20); 
+      text-decoration: inherit; 
+    }
+    
+  </style>
+</head>
+<body id="my-body">
+  <div class="header">
+    <h1>Thank you for testing {{project_name}}</h1>
+  </div>
+  <div class="body">
+    <p>use this link to provide us feedback</p>
+    <a href = {{link}}>{{link}}</a>
+  </div>
+  <div class="footer">
+    
+  </div>
+</body>
