@@ -13,11 +13,11 @@ module.exports.logInResolver = {
       }
       let user = await User.findOne({ email });
       if (!user) {
-        throw new Error("Wrong cerdentials");
+        throw new Error("Wrong creds");
       }
       const match = await compare(password, user.password);
       if (!match) {
-        throw new Error("Wrong cerdentials");
+        throw new Error("Wrong creds");
       }
       let token = getToken({
         id: user._id,
