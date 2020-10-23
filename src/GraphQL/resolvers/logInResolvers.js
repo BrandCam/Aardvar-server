@@ -59,10 +59,7 @@ module.exports.logInResolver = {
         return { token };
       }
       if (check[0]) {
-        const err = new Error(
-          "A user with that email already exists, please log in"
-        );
-        throw err;
+        throw new Error("A user with that email already exists, please log in");
       }
     },
   },
