@@ -1,13 +1,18 @@
 const app = require("./app");
-const { createServer } = require("http");
+const { createServer } = require("https");
+const fs = require("fs");
 const { execute, subscribe } = require("graphql");
-
 const { SubscriptionServer } = require("subscriptions-transport-ws");
 const { makeExecutableSchema } = require("graphql-tools");
 const typeDefs = require("./GraphQL/typeDefs");
 const resolvers = require("./GraphQL/resolvers");
 
-const server = createServer(app);
+const options = {
+  key: fs.readFileSync("key.pem"),
+  cert: fs.readFileSync("cert.pem"),
+};
+
+const server = createServer(options, app);
 const Schema = makeExecutableSchema({
   typeDefs,
   resolvers,
