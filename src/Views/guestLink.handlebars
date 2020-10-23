@@ -3,47 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>report linkt</title>
+    <title>report link</title>
   <style>
     #my-body{
       background-color: #242424;
       color:white;
+    height:400px;
       
     }
     .header{
-      display:flex;
-      justify-content:center;
-      align-items:center;
+      text-align:center;
     }
       h1{
-        border-bottom: 2px solid #121212;
+    	display:inline-block;
         padding:10px;
         margin-bottom:0px;
         text-align:center;
       }
     .body{
-      display:flex;
-      justify-content:center;
-      align-items:center;
+   		text-align: center;
+    margin-top:25px;
       background-color: #242424;
     }
     a{
-      margin-left:25px;
-      color: rgb(57,255,20); 
-      text-decoration: inherit; 
+        text-decoration: inherit; 
+    }
+    .link{
+     
+      color: limegreen; 
+    
+    }
+    p{
+    	display:inline;
     }
     
   </style>
 </head>
-<body id="my-body">
-  <div class="header">
-    <h1>Thank you for testing {{project_name}}</h1>
-  </div>
-  <div class="body">
-    <p>use this link to provide us feedback</p>
-    <a href = {{link}}>{{link}}</a>
-  </div>
-  <div class="footer">
-    
+<body>
+  <div  id="my-body">
+    <div class="header">
+      <h1>Thank you for testing {{project_name}}</h1>
+    </div>
+    <div class="body">
+      <p>use this</p>
+      <a href = {{link}}> <span class='link'>LINK</span></a>
+      <p> link to provide us feedback</p>
+      
+    </div>
+    <div class="footer">
+    </div>
   </div>
 </body>

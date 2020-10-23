@@ -165,68 +165,72 @@ module.exports.projectResolver = {
                 } catch (err) {
                   throw new Error(err.message);
                 }
-              }
-              // NOT ON PROJECT PUSH TO PROJECT GUESTS AND SEND THE EMAIL HERE
-              try {
-                let linkToken = getToken(
-                  {
-                    id: poly_id,
-                    project_id: id,
-                    email: guest_email,
-                  },
-                  "365d"
-                );
-                let link = `http://${process.env.FRONTEND_URL}/guest/create-report?token=${linkToken}`;
-                await sendMail({
-                  to: guest_email,
-                  link,
-                  project_name: project.title,
-                });
-                project.guests.push(guest_email);
-              } catch (err) {
-                throw new Error(err.message);
+              } else {
+                // NOT ON PROJECT PUSH TO PROJECT GUESTS AND SEND THE EMAIL HERE
+                try {
+                  let linkToken = getToken(
+                    {
+                      id: poly_id,
+                      project_id: id,
+                      email: guest_email,
+                    },
+                    "365d"
+                  );
+                  let link = `http://${process.env.FRONTEND_URL}/guest/create-report?token=${linkToken}`;
+                  await sendMail({
+                    to: guest_email,
+                    link,
+                    project_name: project.title,
+                  });
+                  project.guests.push(guest_email);
+                } catch (err) {
+                  throw new Error(err.message);
+                }
               }
             }
-            if (isGuset) {
-              // RESEND AN EMAIL HERE
-              try {
-                let linkToken = getToken(
-                  {
-                    id: poly_id,
-                    project_id: id,
-                    email: guest_email,
-                  },
-                  "365d"
-                );
-                let link = `http://${process.env.FRONTEND_URL}/guest/create-report?token=${linkToken}`;
-                await sendMail({
-                  to: guest_email,
-                  link,
-                  project_name: project.title,
-                });
-              } catch (err) {
-                throw new Error(err.message);
-              }
-            } else {
-              // USER NOT IN SYSTEM PUSH EMAIL TO PROJECT GUESTS AND SEND EMAIL LINK
-              try {
-                let linkToken = getToken(
-                  {
-                    id: poly_id,
-                    project_id: id,
-                    email: guest_email,
-                  },
-                  "365d"
-                );
-                let link = `http://${process.env.FRONTEND_URL}/guest/create-report?token=${linkToken}`;
-                await sendMail({
-                  to: guest_email,
-                  link,
-                  project_name: project.title,
-                });
-                project.guests.push(guest_email);
-              } catch (err) {
-                throw new Error(err.message);
+            //USER DOES NOT HAVE AN ACCOUNT
+            if (!user) {
+              if (isGuset) {
+                // RESEND AN EMAIL HERE
+                try {
+                  let linkToken = getToken(
+                    {
+                      id: poly_id,
+                      project_id: id,
+                      email: guest_email,
+                    },
+                    "365d"
+                  );
+                  let link = `http://${process.env.FRONTEND_URL}/guest/create-report?token=${linkToken}`;
+                  await sendMail({
+                    to: guest_email,
+                    link,
+                    project_name: project.title,
+                  });
+                } catch (err) {
+                  throw new Error(err.message);
+                }
+              } else {
+                // USER NOT IN SYSTEM PUSH EMAIL TO PROJECT GUESTS AND SEND EMAIL LINK
+                try {
+                  let linkToken = getToken(
+                    {
+                      id: poly_id,
+                      project_id: id,
+                      email: guest_email,
+                    },
+                    "365d"
+                  );
+                  let link = `http://${process.env.FRONTEND_URL}/guest/create-report?token=${linkToken}`;
+                  await sendMail({
+                    to: guest_email,
+                    link,
+                    project_name: project.title,
+                  });
+                  project.guests.push(guest_email);
+                } catch (err) {
+                  throw new Error(err.message);
+                }
               }
             }
           }

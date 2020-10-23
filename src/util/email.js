@@ -30,8 +30,8 @@ const sendMail = async ({ to, project_name, link }) => {
     hbs({
       viewEngine: {
         extName: ".handlebars",
-        partialsDir: "./src/views/",
-        layoutsDir: "./src/views/",
+        partialsDir: "/src/views/",
+        layoutsDir: "/src/views/",
         defaultLayout: "guestLink",
       },
       viewPath: path.resolve("./src/Views/"),
