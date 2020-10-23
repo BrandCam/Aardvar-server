@@ -29,10 +29,10 @@ server.listen(port, () => {
     },
     {
       server: server,
-      path: "/graphql",
+      path: "/subscriptions",
     }
   );
   /* eslint-disable no-console */
-  console.log(`Listening: http://localhost:${port}`);
+  console.log(`Listening: ${port}`);
   /* eslint-enable no-console */
 });
