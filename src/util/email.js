@@ -30,13 +30,15 @@ const sendMail = async ({ to, project_name, link }) => {
     hbs({
       viewEngine: {
         extName: ".handlebars",
-        partialsDir: "/src/views/",
-        layoutsDir: "/src/views/",
+        partialsDir: "./src/Views/",
+        layoutsDir: "./src/Views/",
         defaultLayout: "guestLink",
       },
       viewPath: path.resolve("./src/Views/"),
     })
   );
+
+  //C:\Users\ufcca\Desktop\aardvark\aardvark-nodeserver\server\src\Views
 
   let info = await transporter.sendMail({
     from: "noreply@aardvark.reports", // sender address
