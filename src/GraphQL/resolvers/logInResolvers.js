@@ -35,7 +35,11 @@ module.exports.logInResolver = {
         display_name,
       });
       if (!valid) {
-        throw errors;
+        let msg = "";
+        for (const key in errors) {
+          msg = msg + `${errors.key}, `;
+        }
+        throw new Error(msg);
       }
       let check = await User.find({ email });
       if (!check[0]) {
