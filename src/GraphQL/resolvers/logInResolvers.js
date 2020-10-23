@@ -37,7 +37,7 @@ module.exports.logInResolver = {
       if (!valid) {
         let msg = "";
         for (const key in errors) {
-          msg = msg + `${errors.key}, `;
+          msg = msg + `${errors[key]}, `;
         }
         throw new Error(msg);
       }
